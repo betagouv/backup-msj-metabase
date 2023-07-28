@@ -1,0 +1,8 @@
+
+{
+  "jobs": [
+    {
+      "command": "*/10 * * * * copy_msj_db_to_app.sh"
+    }
+  ]
+}
