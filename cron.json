@@ -2,7 +2,7 @@
 {
   "jobs": [
     {
-      "command": "0 * * * * ./copy_msj_db_to_app.sh"
+      "command": "0 0 * * * ./copy_msj_db_to_app.sh"
     }
   ]
 }
