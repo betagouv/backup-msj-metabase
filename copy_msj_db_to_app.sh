@@ -11,8 +11,13 @@ DECLARE
 BEGIN
     RAISE NOTICE 'Starting to drop tables';
     FOR r IN (SELECT tablename FROM pg_tables WHERE schemaname = 'public') LOOP
-        RAISE NOTICE 'Dropping table: %', r.tablename;
-        EXECUTE 'DROP TABLE IF EXISTS ' || quote_ident(r.tablename) || ' CASCADE';
+        BEGIN
+            RAISE NOTICE 'Dropping table: %', r.tablename;
+            EXECUTE 'DROP TABLE IF EXISTS ' || quote_ident(r.tablename) || ' CASCADE';
+        EXCEPTION
+            WHEN OTHERS THEN
+                RAISE NOTICE 'Error dropping table: %', r.tablename;
+        END;
     END LOOP;
     RAISE NOTICE 'Finished dropping tables';
 END
