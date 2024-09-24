@@ -15,4 +15,4 @@ BEGIN
 END
 \$\$;"
 
-pg_restore --clean --if-exists --no-owner --no-privileges --no-comments --dbname $METABASE_POSTGRESQL_URL dump.pgsql
+pg_restore --no-owner --no-privileges --no-comments --dbname $METABASE_POSTGRESQL_URL dump.pgsql
